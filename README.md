@@ -35,6 +35,24 @@ This repository contains lab work for networking, data structures, and Java prog
   - Assignment_12.cpp
 
 - JAVA-LAB: Java lab exercises and projects
+  - BankingApp.java
+  - Elec.java
+  - Excep.java
+  - FileCount.java
+  - ShapeApp.java
+  - Sort.java
+  - StringOperations.java
+  - StudentApp.java
+  - test.txt
+  - ThreadApp.java
+  - Calculator/: Calculator application with arithmetic operations
+    - arithmetic/: Arithmetic operation classes
+      - Add.java
+      - Divide.java
+      - Multiply.java
+      - Subtract.java
+    - main/: Main application class
+      - Main.java
 
 ## Notes
 
