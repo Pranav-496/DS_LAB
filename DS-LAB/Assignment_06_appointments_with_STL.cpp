@@ -1,3 +1,19 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-06-Appointment Management: Write a menu driven C++ program for
+storing appointment schedules for the day.
+Appointments are booked randomly using linked lists. Set start and end
+time for visit slots. Write functions for
+1. Display free slots
+2. Book appointment
+3. Cancel appointment ( check validity, time bounds, availability etc)
+4. Sort list based on time
+5. Sort list based on time using pointer manipulation
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

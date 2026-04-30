@@ -1,3 +1,19 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-03-Sparse Matrix: Write a menu driven C++ program with class for Sparse
+Matrix. Write functions to perform Sparse Matrix operations as listed
+below
+1. Read sparse matrix
+2. Display sparse matrix
+3. Add two sparse matrices
+4. Find transpose using Simple transpose algorithm
+5. Find transpose using Fast transpose algorithm
+Compare complexity of simple and fast transpose using counter.
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

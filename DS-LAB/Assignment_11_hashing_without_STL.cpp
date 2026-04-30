@@ -1,3 +1,18 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-11-A Dictionary using Hash table: A Dictionary stores key and value pairs
+Data: Set of (key, value) pairs, Keys are mapped to values, Keys must be
+comparable, Keys must be unique.
+Standard Operations: Insert(key, value), Find(key), Delete(key)
+Write a menu driven C++ program to provide above standard operations
+on dictionaries
+Write a menu driven C++ program to provide all the functions of a
+dictionary (ADT) using hashing and handle collisions using chaining.
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

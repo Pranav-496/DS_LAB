@@ -1,3 +1,22 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-05-Knight’s tour: The problem is to move the knight, beginning from any
+given square on the chessboard, in such a manner that it travels
+successively to all 64 squares, touching each square once and only once.
+It is convenient to represent a solution by placing the numbers 1,2, ...,64 in
+the squares of the chessboard indicating the order in which the squares are
+reached. Note that it is not required that the knight be able to reach the
+initial position by one more move; if this is possible the knight's tour is
+called re-entrant. One of the more ingenious methods for solving the
+problem of the knight's tour is that given by J. C. Warnsdorff in 1823. His
+rule is that the knight must always be moved to one of the squares from
+which there are the fewest exits to squares not already traversed. Write a
+C++ program to implement Warnsdorff's rule and show it graphically.
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

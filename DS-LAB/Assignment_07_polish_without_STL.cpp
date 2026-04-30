@@ -1,3 +1,17 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-07-Expression conversion: Write a menu driven C++ program for expression
+conversion and evaluation
+1. infix to prefix
+2. prefix to postfix
+3. prefix to infix
+4. postfix to infix
+5. postfix to prefix
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

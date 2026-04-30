@@ -1,3 +1,24 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-10-Sorting: Write a C++ menu driven program to store the percentage of
+marks obtained by the students in an array. Write function for sorting
+array of floating point numbers in ascending order using
+1. Selection Sort
+2. Bubble sort
+3. Insertion sort
+4. Shell Sort
+5. Quick sort
+6. Radix sort
+7. Display top five scores
+Implement any 4 methods of sorting. Provide choice to user to take input
+from user or using random numbers.
+Use Standard Template Library (STL) sort function
+*/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 

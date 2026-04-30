@@ -1,3 +1,34 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-12-A list of data representing various environmental parameters such as
+temperature, humidity, pollution levels, etc is maintained using
+appropriate data structure. Write a C++ program that uses data structures
+to perform the following operations:
+1. Find the maximum and minimum values of each parameter in the list.
+2. Calculate the average value of each parameter in the list.
+3. Sort the list in ascending order of any one parameter.
+4. Find the highest and lowest values of any one parameter that are
+considered safe for the environment.
+5. Calculate the impact of the parameter values on the environment based
+on certain pre-defined criteria.
+6. Analyze the impact of the environmental parameters on the health and
+safety of the society.
+7. Ensure that the program follows ethical and professional practices,
+such as ensuring the privacy and security of the data.
+You should implement the program using appropriate data structures that
+take into account the size and complexity of the data, and demonstrate an
+understanding of the societal and environmental issues related to the data.
+Your program should also demonstrate an understanding of the impact of
+the parameter values on the environment, and the need for sustainable
+development. Finally, your program should adhere to ethical principles
+and professional practices, such as ensuring the confidentiality, privacy,
+and security of the data
+*/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 

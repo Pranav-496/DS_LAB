@@ -1,3 +1,15 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-09-Simulation of pizza parlor: Pizza parlor accepting maximum M orders.
+Orders are served on a first come first served basis. Order once placed
+cannot be canceled.
+Write C++ program to simulate the system using simple queue or circular
+queue
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

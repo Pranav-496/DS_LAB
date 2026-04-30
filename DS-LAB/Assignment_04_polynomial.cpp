@@ -1,3 +1,17 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-04-Polynomial operations: Write a menu driven C++ program with class for
+single variable polynomial and write functions to perform following
+polynomial operations using arrays
+1. Read polynomial
+2. Display polynomial
+3. Add two polynomials
+You can try above polynomial operation using Linked list
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 const int MaxSize = 100;

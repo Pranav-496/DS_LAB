@@ -1,3 +1,20 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-01-Set operations: Write a menu driven C++ program to store sets for
+students' names participating in different events in Equinox such as
+Coding contest, Project competition, Paper Presentation, MasterMind etc.
+1. Find out participants who have participated in Coding and Project
+both
+2. Find out participants who have participated in Coding or Project
+competition or both or Mastermind
+3. Find out participants who have participated in Coding but not in
+Master mind
+Find out participants who have participated in all events
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -1,3 +1,21 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: Data Structures
+Assignment-02-String Operations: Write a menu driven C++ program with a class for
+String. Write functions
+1. To determine the frequency of occurrence of a particular character
+in the string.
+2. Extract a new string from original string by accepting starting
+position and length
+3. To accept any character and return the string with by removing all
+occurrences of a character accepted
+4. To make an in-place replacement of a substring w of a string by the
+string x. Note that w may not be of same size that of x
+5. To check whether given string is palindrome or not
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
