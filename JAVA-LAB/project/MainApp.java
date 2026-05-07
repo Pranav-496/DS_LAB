@@ -1,3 +1,12 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: JPL
+Assignment-08-Write a Java program to create calculator for performing arithmetic
+operations using packages
+*/
+
 import calculator.*;
 import java.util.Scanner;
 

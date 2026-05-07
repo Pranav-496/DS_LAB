@@ -1,3 +1,8 @@
+/*
+Write a Java program that creates two threads to find and print even and odd
+numbers from 1 to 20.
+*/
+
 class EvenThread extends Thread {
 
     public void run() {
