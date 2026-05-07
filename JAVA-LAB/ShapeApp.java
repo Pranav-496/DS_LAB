@@ -72,5 +72,6 @@ public class ShapeApp {
         System.out.println("\nArea of Rectangle: " + rect.area());
 
         System.out.println("Area of Triangle: " + tri.area());
+        sc.close();
     }
 }

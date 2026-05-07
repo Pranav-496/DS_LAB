@@ -77,5 +77,6 @@ public class EmployeeApp {
         System.out.println("\nManager Salary: " + m.calculateSalary());
 
         System.out.println("Programmer Salary: " + p.calculateSalary());
+        sc.close();
     }
 }

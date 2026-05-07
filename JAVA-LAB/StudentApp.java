@@ -62,5 +62,6 @@ public class StudentApp {
         }
 
         Student.showCount();
+        sc.close();
     }
 }

@@ -98,5 +98,6 @@ public class Sort {
 
         System.out.println("\nSelection Sort Result:");
         printArray(arr2);
+        sc.close();
     }
 }
