@@ -1,3 +1,12 @@
+/*
+Name: Pranav Shailesh Landge
+Class: SY-A
+Roll_no: 41
+Subject: JPL
+Assignment-10-Write a Java program to implement a producer-consumer problem using the
+wait() and notify() methods for thread synchronization.
+*/
+
 class Buffer {
     int data;
     boolean available = false;
