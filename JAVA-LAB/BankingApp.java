@@ -26,6 +26,7 @@ class Account {
 
     Account(String name, long accountNumber, double balance,
             double rateOfInterest, String contact, String address) {
+
         this.name = name;
         this.accountNumber = accountNumber;
         this.balance = balance;
@@ -35,6 +36,7 @@ class Account {
     }
 
     void deposit(double amount) {
+
         if (amount <= 0) {
             System.out.println("Invalid amount");
             return;
@@ -45,6 +47,7 @@ class Account {
     }
 
     void withdraw(double amount) {
+
         if (amount <= 0) {
             System.out.println("Invalid amount");
             return;
@@ -60,15 +63,19 @@ class Account {
     }
 
     void computeInterest() {
+
         double interest = (balance * rateOfInterest) / 100.0;
+
         System.out.println("Interest: " + interest);
     }
 
     void displayBalance() {
+
         System.out.println("Current Balance: " + balance);
     }
 
     void displayDetails() {
+
         System.out.println("Name: " + name);
         System.out.println("Account No: " + accountNumber);
         System.out.println("Balance: " + balance);
@@ -79,13 +86,19 @@ class Account {
 }
 
 public class BankingApp {
+
     static Scanner sc = new Scanner(System.in);
-    static ArrayList<Account> accounts = new ArrayList<>();
+
+    static Account accounts[] = new Account[100];
+
+    static int count = 0;
 
     static Account findAccount(long accNo) {
-        for (Account acc : accounts) {
-            if (acc.accountNumber == accNo) {
-                return acc;
+
+        for (int i = 0; i < count; i++) {
+
+            if (accounts[i].accountNumber == accNo) {
+                return accounts[i];
             }
         }
 
@@ -117,16 +130,19 @@ public class BankingApp {
         System.out.print("Enter Address: ");
         String address = sc.nextLine();
 
-        Account acc = new Account(name, accNo, bal, roi, contact, address);
-        accounts.add(acc);
+        accounts[count] = new Account(name, accNo, bal, roi, contact, address);
+
+        count++;
 
         System.out.println("Account created successfully");
     }
 
     public static void main(String[] args) {
+
         int choice;
 
         do {
+
             System.out.println("\n--- Banking Menu ---");
             System.out.println("1. Create Account");
             System.out.println("2. Deposit");
@@ -135,18 +151,25 @@ public class BankingApp {
             System.out.println("5. Display Balance");
             System.out.println("6. Display Details");
             System.out.println("7. Exit");
+
             System.out.print("Enter choice: ");
 
             choice = sc.nextInt();
 
             switch (choice) {
+
                 case 1:
+
                     sc.nextLine();
+
                     createAccount();
+
                     break;
 
                 case 2: {
+
                     System.out.print("Enter Account Number: ");
+
                     long accNo = sc.nextLong();
 
                     Account acc = findAccount(accNo);
@@ -157,14 +180,18 @@ public class BankingApp {
                     }
 
                     System.out.print("Enter amount: ");
+
                     double amount = sc.nextDouble();
 
                     acc.deposit(amount);
+
                     break;
                 }
 
                 case 3: {
+
                     System.out.print("Enter Account Number: ");
+
                     long accNo = sc.nextLong();
 
                     Account acc = findAccount(accNo);
@@ -175,14 +202,18 @@ public class BankingApp {
                     }
 
                     System.out.print("Enter amount: ");
+
                     double amount = sc.nextDouble();
 
                     acc.withdraw(amount);
+
                     break;
                 }
 
                 case 4: {
+
                     System.out.print("Enter Account Number: ");
+
                     long accNo = sc.nextLong();
 
                     Account acc = findAccount(accNo);
@@ -193,11 +224,14 @@ public class BankingApp {
                     }
 
                     acc.computeInterest();
+
                     break;
                 }
 
                 case 5: {
+
                     System.out.print("Enter Account Number: ");
+
                     long accNo = sc.nextLong();
 
                     Account acc = findAccount(accNo);
@@ -208,11 +242,14 @@ public class BankingApp {
                     }
 
                     acc.displayBalance();
+
                     break;
                 }
 
                 case 6: {
+
                     System.out.print("Enter Account Number: ");
+
                     long accNo = sc.nextLong();
 
                     Account acc = findAccount(accNo);
@@ -223,14 +260,18 @@ public class BankingApp {
                     }
 
                     acc.displayDetails();
+
                     break;
                 }
 
                 case 7:
+
                     System.out.println("Exiting...");
+
                     break;
 
                 default:
+
                     System.out.println("Invalid choice");
             }
 
