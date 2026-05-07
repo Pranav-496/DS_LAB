@@ -17,257 +17,223 @@ v. displayBalance()
 import java.util.*;
 
 class Account {
-  String name;
-  long accountNumber;
-  double balance;
-  double rateOfInterest;
-  String contact;
-  String address;
+    String name;
+    long accountNumber;
+    double balance;
+    double rateOfInterest;
+    String contact;
+    String address;
 
-  Account(String name, long accountNumber, double balance,
-      double rateOfInterest, String contact, String address) {
-    this.name = name;
-    this.accountNumber = accountNumber;
-    this.balance = balance;
-    this.rateOfInterest = rateOfInterest;
-    this.contact = contact;
-    this.address = address;
-  }
-
-  void deposit(double amount) {
-    if (amount <= 0) {
-      System.out.println("Invalid amount");
-      return;
+    Account(String name, long accountNumber, double balance,
+            double rateOfInterest, String contact, String address) {
+        this.name = name;
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.rateOfInterest = rateOfInterest;
+        this.contact = contact;
+        this.address = address;
     }
-    balance += amount;
-    System.out.println("Deposit successful");
-  }
 
-  void withdraw(double amount) {
-    if (amount <= 0) {
-      System.out.println("Invalid amount");
-      return;
+    void deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid amount");
+            return;
+        }
+
+        balance += amount;
+        System.out.println("Deposit successful");
     }
-    if (amount > balance) {
-      System.out.println("Insufficient balance");
-      return;
+
+    void withdraw(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid amount");
+            return;
+        }
+
+        if (amount > balance) {
+            System.out.println("Insufficient balance");
+            return;
+        }
+
+        balance -= amount;
+        System.out.println("Withdrawal successful");
     }
-    balance -= amount;
-    System.out.println("Withdrawal successful");
-  }
 
-  void computeInterest() {
-    double interest = (balance * rateOfInterest) / 100.0;
-    System.out.println("Interest: " + interest);
-  }
+    void computeInterest() {
+        double interest = (balance * rateOfInterest) / 100.0;
+        System.out.println("Interest: " + interest);
+    }
 
-  void displayBalance() {
-    System.out.println("Current Balance: " + balance);
-  }
+    void displayBalance() {
+        System.out.println("Current Balance: " + balance);
+    }
 
-  void displayDetails() {
-    System.out.println("Name: " + name);
-    System.out.println("Account No: " + accountNumber);
-    System.out.println("Balance: " + balance);
-    System.out.println("Rate of Interest: " + rateOfInterest);
-    System.out.println("Contact: " + contact);
-    System.out.println("Address: " + address);
-  }
+    void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Account No: " + accountNumber);
+        System.out.println("Balance: " + balance);
+        System.out.println("Rate of Interest: " + rateOfInterest);
+        System.out.println("Contact: " + contact);
+        System.out.println("Address: " + address);
+    }
 }
 
 public class BankingApp {
-  static Scanner sc = new Scanner(System.in);
-  static Account acc = null;
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList<Account> accounts = new ArrayList<>();
 
-  static void createAccount() {
-    System.out.print("Enter Name: ");
-    String name = sc.nextLine();
+    static Account findAccount(long accNo) {
+        for (Account acc : accounts) {
+            if (acc.accountNumber == accNo) {
+                return acc;
+            }
+        }
 
-    System.out.print("Enter Account Number: ");
-    long accNo = sc.nextLong();
+        return null;
+    }
 
-    System.out.print("Enter Initial Balance: ");
-    double bal = sc.nextDouble();
+    static void createAccount() {
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
 
-    System.out.print("Enter Rate of Interest: ");
-    double roi = sc.nextDouble();
-    sc.nextLine();
+        System.out.print("Enter Account Number: ");
+        long accNo = sc.nextLong();
 
-    System.out.print("Enter Contact: ");
-    String contact = sc.nextLine();
+        if (findAccount(accNo) != null) {
+            System.out.println("Account already exists");
+            return;
+        }
 
-    System.out.print("Enter Address: ");
-    String address = sc.nextLine();
+        System.out.print("Enter Initial Balance: ");
+        double bal = sc.nextDouble();
 
-    acc = new Account(name, accNo, bal, roi, contact, address);
-    System.out.println("Account created successfully");
-  }
+        System.out.print("Enter Rate of Interest: ");
+        double roi = sc.nextDouble();
+        sc.nextLine();
 
-  public static void main(String[] args) {
-    int choice;
+        System.out.print("Enter Contact: ");
+        String contact = sc.nextLine();
 
-    do {
-      System.out.println("\n--- Banking Menu ---");
-      System.out.println("1. Create Account");
-      System.out.println("2. Deposit");
-      System.out.println("3. Withdraw");
-      System.out.println("4. Compute Interest");
-      System.out.println("5. Display Balance");
-      System.out.println("6. Display Details");
-      System.out.println("7. Exit");
-      System.out.print("Enter choice: ");
+        System.out.print("Enter Address: ");
+        String address = sc.nextLine();
 
-      choice = sc.nextInt();
+        Account acc = new Account(name, accNo, bal, roi, contact, address);
+        accounts.add(acc);
 
-      switch (choice) {
-        case 1:
-          sc.nextLine();
-          createAccount();
-          break;
+        System.out.println("Account created successfully");
+    }
 
-        case 2:
-          if (acc == null) {
-            System.out.println("Create account first");
-            break;
-          }
-          System.out.print("Enter amount: ");
-          acc.deposit(sc.nextDouble());
-          break;
+    public static void main(String[] args) {
+        int choice;
 
-        case 3:
-          if (acc == null) {
-            System.out.println("Create account first");
-            break;
-          }
-          System.out.print("Enter amount: ");
-          acc.withdraw(sc.nextDouble());
-          break;
+        do {
+            System.out.println("\n--- Banking Menu ---");
+            System.out.println("1. Create Account");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Compute Interest");
+            System.out.println("5. Display Balance");
+            System.out.println("6. Display Details");
+            System.out.println("7. Exit");
+            System.out.print("Enter choice: ");
 
-        case 4:
-          if (acc == null) {
-            System.out.println("Create account first");
-            break;
-          }
-          acc.computeInterest();
-          break;
+            choice = sc.nextInt();
 
-        case 5:
-          if (acc == null) {
-            System.out.println("Create account first");
-            break;
-          }
-          acc.displayBalance();
-          break;
+            switch (choice) {
+                case 1:
+                    sc.nextLine();
+                    createAccount();
+                    break;
 
-        case 6:
-          if (acc == null) {
-            System.out.println("Create account first");
-            break;
-          }
-          acc.displayDetails();
-          break;
+                case 2: {
+                    System.out.print("Enter Account Number: ");
+                    long accNo = sc.nextLong();
 
-        case 7:
-          System.out.println("Exiting...");
-          break;
+                    Account acc = findAccount(accNo);
 
-        default:
-          System.out.println("Invalid choice");
-      }
+                    if (acc == null) {
+                        System.out.println("Account not found");
+                        break;
+                    }
 
-    } while (choice != 7);
-  }
+                    System.out.print("Enter amount: ");
+                    double amount = sc.nextDouble();
+
+                    acc.deposit(amount);
+                    break;
+                }
+
+                case 3: {
+                    System.out.print("Enter Account Number: ");
+                    long accNo = sc.nextLong();
+
+                    Account acc = findAccount(accNo);
+
+                    if (acc == null) {
+                        System.out.println("Account not found");
+                        break;
+                    }
+
+                    System.out.print("Enter amount: ");
+                    double amount = sc.nextDouble();
+
+                    acc.withdraw(amount);
+                    break;
+                }
+
+                case 4: {
+                    System.out.print("Enter Account Number: ");
+                    long accNo = sc.nextLong();
+
+                    Account acc = findAccount(accNo);
+
+                    if (acc == null) {
+                        System.out.println("Account not found");
+                        break;
+                    }
+
+                    acc.computeInterest();
+                    break;
+                }
+
+                case 5: {
+                    System.out.print("Enter Account Number: ");
+                    long accNo = sc.nextLong();
+
+                    Account acc = findAccount(accNo);
+
+                    if (acc == null) {
+                        System.out.println("Account not found");
+                        break;
+                    }
+
+                    acc.displayBalance();
+                    break;
+                }
+
+                case 6: {
+                    System.out.print("Enter Account Number: ");
+                    long accNo = sc.nextLong();
+
+                    Account acc = findAccount(accNo);
+
+                    if (acc == null) {
+                        System.out.println("Account not found");
+                        break;
+                    }
+
+                    acc.displayDetails();
+                    break;
+                }
+
+                case 7:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+
+        } while (choice != 7);
+    }
 }
-
-/*
- * Testcase:
- * --- Banking Menu ---
- * 1. Create Account
- * 2. Deposit
- * 3. Withdraw
- * 4. Compute Interest
- * 5. Display Balance
- * 6. Display Details
- * 7. Exit
- * Enter choice: 1
- * Enter Name: Pranav Landge
- * Enter Account Number: 101
- * Enter Initial Balance: 9999
- * Enter Rate of Interest: 9
- * Enter Contact: 9999999999
- * Enter Address: Mars
- * Account created successfully
- * 
- * --- Banking Menu ---
- * 1. Create Account
- * 2. Deposit
- * 3. Withdraw
- * 4. Compute Interest
- * 5. Display Balance
- * 6. Display Details
- * 7. Exit
- * Enter choice: 2
- * Enter amount: 1000
- * Deposit successful
- * 
- * --- Banking Menu ---
- * 1. Create Account
- * 2. Deposit
- * 3. Withdraw
- * 4. Compute Interest
- * 5. Display Balance
- * 6. Display Details
- * 7. Exit
- * Enter choice: 3
- * Enter amount: 125
- * Withdrawal successful
- * 
- * --- Banking Menu ---
- * 1. Create Account
- * 2. Deposit
- * 3. Withdraw
- * 4. Compute Interest
- * 5. Display Balance
- * 6. Display Details
- * 7. Exit
- * Enter choice: 4
- * Interest: 978.66
- * 
- * --- Banking Menu ---
- * 1. Create Account
- * 2. Deposit
- * 3. Withdraw
- * 4. Compute Interest
- * 5. Display Balance
- * 6. Display Details
- * 7. Exit
- * Enter choice: 5
- * Current Balance: 10874.0
- * 
- * --- Banking Menu ---
- * 1. Create Account
- * 2. Deposit
- * 3. Withdraw
- * 4. Compute Interest
- * 5. Display Balance
- * 6. Display Details
- * 7. Exit
- * Enter choice: 6
- * Name: Pranav Landge
- * Account No: 101
- * Balance: 10874.0
- * Rate of Interest: 9.0
- * Contact: 9999999999
- * Address: Mars
- * 
- * --- Banking Menu ---
- * 1. Create Account
- * 2. Deposit
- * 3. Withdraw
- * 4. Compute Interest
- * 5. Display Balance
- * 6. Display Details
- * 7. Exit
- * Enter choice: 7
- * Exiting...
- */

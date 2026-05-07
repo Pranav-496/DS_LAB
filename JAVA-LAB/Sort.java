@@ -9,6 +9,8 @@ classes BubbleSort and SelectionSort that implement the “Sortable” interface
 and provide their own implementations of the sort() method
 */
 
+import java.util.*;
+
 interface Sortable {
     void sort(int arr[]);
 }
@@ -19,8 +21,11 @@ class BubbleSort implements Sortable {
         int n = arr.length;
 
         for (int i = 0; i < n - 1; i++) {
+
             for (int j = 0; j < n - i - 1; j++) {
+
                 if (arr[j] > arr[j + 1]) {
+
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -36,9 +41,11 @@ class SelectionSort implements Sortable {
         int n = arr.length;
 
         for (int i = 0; i < n - 1; i++) {
+
             int minIndex = i;
 
             for (int j = i + 1; j < n; j++) {
+
                 if (arr[j] < arr[minIndex]) {
                     minIndex = j;
                 }
@@ -54,16 +61,31 @@ class SelectionSort implements Sortable {
 public class Sort {
 
     static void printArray(int arr[]) {
+
         for (int i : arr) {
             System.out.print(i + " ");
         }
+
         System.out.println();
     }
 
     public static void main(String[] args) {
 
-        int arr1[] = {5, 3, 8, 1, 2};
-        int arr2[] = {5, 3, 8, 1, 2};
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size of array: ");
+        int n = sc.nextInt();
+
+        int arr1[] = new int[n];
+        int arr2[] = new int[n];
+
+        System.out.println("Enter array elements:");
+
+        for (int i = 0; i < n; i++) {
+
+            arr1[i] = sc.nextInt();
+            arr2[i] = arr1[i];
+        }
 
         Sortable s1 = new BubbleSort();
         Sortable s2 = new SelectionSort();
@@ -71,18 +93,10 @@ public class Sort {
         s1.sort(arr1);
         s2.sort(arr2);
 
-        System.out.println("Bubble Sort Result:");
+        System.out.println("\nBubble Sort Result:");
         printArray(arr1);
 
-        System.out.println("Selection Sort Result:");
+        System.out.println("\nSelection Sort Result:");
         printArray(arr2);
     }
 }
-
-/*
-Testcase:
-Bubble Sort Result:
-1 2 3 5 8
-Selection Sort Result:
-1 2 3 5 8
-*/

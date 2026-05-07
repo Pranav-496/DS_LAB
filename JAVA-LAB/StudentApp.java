@@ -7,6 +7,8 @@ Assignment-02-Write a Java program to initialize and refer instance of class hav
 parameterized constructor using this keyword. Make use of static keyword.
 */
 
+import java.util.*;
+
 class Student {
     String name;
     int roll;
@@ -19,32 +21,46 @@ class Student {
     }
 
     void display() {
-        System.out.println("Name: " + this.name);
-        System.out.println("Roll: " + this.roll);
+        System.out.println("\nName: " + name);
+        System.out.println("Roll: " + roll);
     }
 
     static void showCount() {
-        System.out.println("Total Students: " + count);
+        System.out.println("\nTotal Students: " + count);
     }
 }
 
 public class StudentApp {
     public static void main(String[] args) {
-        Student s1 = new Student("Narendra Modi", 41);
-        Student s2 = new Student("Amit Shah", 42);
 
-        s1.display();
-        s2.display();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        Student students[] = new Student[n];
+
+        for (int i = 0; i < n; i++) {
+
+            System.out.println("\nEnter details of Student " + (i + 1));
+
+            System.out.print("Enter name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter roll number: ");
+            int roll = sc.nextInt();
+            sc.nextLine();
+
+            students[i] = new Student(name, roll);
+        }
+
+        System.out.println("\n--- Student Details ---");
+
+        for (int i = 0; i < n; i++) {
+            students[i].display();
+        }
 
         Student.showCount();
     }
 }
-
-/*
-Testcase:
-Name: Narendra Modi
-Roll: 41
-Name: Amit Shah
-Roll: 42
-Total Students: 2
-*/

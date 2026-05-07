@@ -10,6 +10,8 @@ the sub class overrides area() so that it returns the area of a rectangle and a
 triangle respectively
 */
 
+import java.util.*;
+
 class Shape {
     double dim1;
     double dim2;
@@ -26,6 +28,7 @@ class Shape {
 }
 
 class Rectangle extends Shape {
+
     Rectangle(double a, double b) {
         super(a, b);
     }
@@ -37,6 +40,7 @@ class Rectangle extends Shape {
 }
 
 class Triangle extends Shape {
+
     Triangle(double a, double b) {
         super(a, b);
     }
@@ -48,17 +52,25 @@ class Triangle extends Shape {
 }
 
 public class ShapeApp {
-    public static void main(String[] args) {
-        Rectangle rect = new Rectangle(10, 5);
-        Triangle tri = new Triangle(10, 8);
 
-        System.out.println("Area of Rectangle: " + rect.area());
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter length and breadth of rectangle: ");
+        double r1 = sc.nextDouble();
+        double r2 = sc.nextDouble();
+
+        System.out.print("Enter base and height of triangle: ");
+        double t1 = sc.nextDouble();
+        double t2 = sc.nextDouble();
+
+        Rectangle rect = new Rectangle(r1, r2);
+
+        Triangle tri = new Triangle(t1, t2);
+
+        System.out.println("\nArea of Rectangle: " + rect.area());
+
         System.out.println("Area of Triangle: " + tri.area());
     }
 }
-
-/*
-Testcase:
-Area of Rectangle: 50.0
-Area of Triangle: 40.0
-*/
