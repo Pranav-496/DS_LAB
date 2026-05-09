@@ -10,100 +10,98 @@ using Hamming Codes or CRC.
 #include <bits/stdc++.h>
 using namespace std;
 
-string xorOperation(string a, string b)
-{
-  string result = "";
-  for (int i = 1; i < b.length(); i++)
-  {
-    if (a[i] == b[i])
-      result += '0';
-    else
-      result += '1';
-  }
-  return result;
-}
-
-string mod2div(string dividend, string divisor)
-{
-  int pick = divisor.length();
-  string temp = dividend.substr(0, pick);
-
-  while (pick < dividend.length())
-  {
-    if (temp[0] == '1')
-      temp = xorOperation(divisor, temp) + dividend[pick];
-    else
-      temp = xorOperation(string(divisor.length(), '0'), temp) + dividend[pick];
-
-    pick++;
-  }
-
-  if (temp[0] == '1')
-    temp = xorOperation(divisor, temp);
-  else
-    temp = xorOperation(string(divisor.length(), '0'), temp);
-
-  return temp;
-}
-
 int main()
 {
-  string data, key;
+  int n, m;
 
-  cout << "Enter data (binary): ";
-  cin >> data;
+  cout << "Enter number of data bits: ";
+  cin >> n;
 
-  cout << "Enter generator polynomial: ";
-  cin >> key;
+  vector<int> data(n);
 
-  int key_len = key.length();
+  cout << "Enter data bits: ";
 
-  string appended_data = data + string(key_len - 1, '0');
+  for (int i = 0; i < n; i++) cin >> data[i];
 
-  string remainder = mod2div(appended_data, key);
+  cout << "Enter number of generator bits: ";
+  cin >> m;
 
-  string codeword = data + remainder;
+  vector<int> gen(m);
 
-  cout << "Transmitted Codeword: " << codeword << endl;
+  cout << "Enter generator bits: ";
 
-  string received;
-  cout << "Enter received codeword: ";
-  cin >> received;
+  for (int i = 0; i < m; i++) cin >> gen[i];
 
-  string check = mod2div(received, key);
+  vector<int> temp(n + m - 1);
+
+  for (int i = 0; i < n; i++) temp[i] = data[i];
+
+  for (int i = 0; i < n; i++)
+  {
+    if (temp[i] == 1)
+    {
+      for (int j = 0; j < m; j++)
+      {
+        temp[i + j] ^= gen[j];
+      }
+    }
+  }
+
+  vector<int> codeword(n + m - 1);
+
+  for (int i = 0; i < n; i++) codeword[i] = data[i];
+
+  for (int i = 0; i < m - 1; i++) codeword[n + i] = temp[n + i];
+
+  cout << "\nTransmitted Codeword: ";
+
+  for (int i = 0; i < n + m - 1; i++) cout << codeword[i] << " ";
+
+  cout << endl;
+
+  vector<int> received(n + m - 1);
+
+  cout << "\nEnter received codeword: ";
+
+  for (int i = 0; i < n + m - 1; i++) cin >> received[i];
+
+  for (int i = 0; i < n; i++)
+  {
+    if (received[i] == 1)
+    {
+      for (int j = 0; j < m; j++)
+      {
+        received[i + j] ^= gen[j];
+      }
+    }
+  }
 
   bool error = false;
-  for (char c : check)
+
+  for (int i = n; i < n + m - 1; i++)
   {
-    if (c == '1')
+    if (received[i] != 0)
     {
       error = true;
       break;
     }
   }
 
-  if (error)
-    cout << "Error detected in received data\n";
-  else
-    cout << "No error detected\n";
+  if (error) cout << "Error detected\n";
+  else cout << "No error detected\n";
 
   return 0;
 }
 
-/* 
-Testcase 1:
-Enter data (binary): 1101
-Enter generator polynomial: 1011
-Enter received codeword: 1101001
+/*
+Testcase:
+Enter number of data bits: 4
+Enter data bits: 1 0 1 1
+Enter number of generator bits: 4      
+Enter generator bits: 1 0 1 1
 
-Transmitted Codeword: 1101001
-No error detected
+Transmitted Codeword: 1 0 1 1 0 0 0 
 
-Testcase 2:
-Enter data (binary): 1101
-Enter generator polynomial: 1011
-Enter received codeword: 1101101
-
-Transmitted Codeword: 1101001
-Error detected in received data
+Enter received codeword: 1 1 1 1 0 0 0
+Error detected
 */

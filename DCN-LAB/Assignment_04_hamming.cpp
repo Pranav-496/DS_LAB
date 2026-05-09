@@ -19,13 +19,11 @@ int main()
   vector<int> data(m);
 
   cout << "Enter data bits: ";
-  for (int i = 0; i < m; i++)
-    cin >> data[i];
+  for (int i = 0; i < m; i++) cin >> data[i];
 
   int r = 0;
 
-  while (pow(2, r) < (m + r + 1))
-    r++;
+  while (pow(2, r) < (m + r + 1)) r++;
 
   int n = m + r;
 
@@ -35,10 +33,8 @@ int main()
 
   for (int i = 1; i <= n; i++)
   {
-    if ((i & (i - 1)) == 0)
-      hamming[i] = 0;
-    else
-      hamming[i] = data[k++];
+    if ((i & (i - 1)) == 0) hamming[i] = 0;
+    else hamming[i] = data[k++];
   }
 
   for (int p = 1; p <= n; p *= 2)
@@ -47,8 +43,7 @@ int main()
 
     for (int j = 1; j <= n; j++)
     {
-      if (j & p)
-        count += hamming[j];
+      if (j & p) count += hamming[j];
     }
 
     hamming[p] = count % 2;
@@ -56,8 +51,7 @@ int main()
 
   cout << "\nHamming Code: ";
 
-  for (int i = 1; i <= n; i++)
-    cout << hamming[i] << " ";
+  for (int i = 1; i <= n; i++) cout << hamming[i] << " ";
 
   cout << "\n";
 
@@ -65,8 +59,7 @@ int main()
 
   cout << "Enter received code: ";
 
-  for (int i = 1; i <= n; i++)
-    cin >> received[i];
+  for (int i = 1; i <= n; i++) cin >> received[i];
 
   int error = 0;
 
