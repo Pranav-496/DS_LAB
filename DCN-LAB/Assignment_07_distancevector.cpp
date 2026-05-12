@@ -67,40 +67,17 @@ int main()
         }
       }
     }
-
-    // Check negative cycle
-    bool negativeCycle = false;
-    for (int i = 0; i < n; i++)
-    {
-      for (int j = 0; j < n; j++)
-      {
-
-        if (cost[i][j] != INF && dist[i] != INF &&
-            dist[j] > dist[i] + cost[i][j])
-        {
-
-          negativeCycle = true;
-        }
-      }
-    }
-
     // Print results
     cout << "From node " << source << ":\n";
 
-    if (negativeCycle)
+    for (int i = 0; i < n; i++)
     {
-      cout << "Negative weight cycle detected!\n";
+      if (dist[i] == INF)
+        cout << "To " << i << " -> INF\n";
+      else
+        cout << "To " << i << " -> " << dist[i] << "\n";
     }
-    else
-    {
-      for (int i = 0; i < n; i++)
-      {
-        if (dist[i] == INF)
-          cout << "To " << i << " -> INF\n";
-        else
-          cout << "To " << i << " -> " << dist[i] << "\n";
-      }
-    }
+
     cout << endl;
   }
 
